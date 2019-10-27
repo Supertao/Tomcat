@@ -95,3 +95,5 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
     }
 
 ```
+我们重点关注Service的两个方法addService和findService。 从addService方法中可以看出Service通过*数组*来管理的，每新增一个service的话，就把原来的
+serivce 拷贝到一个新数组，再把新的service放入数组中。而Server和Service是关联的 ，当判断getState().isAvailable()状态是否有效，来决定是否执行service方法。这里说的状态，就是Tomcat管理各组件生命周期的lifecycle接口。
